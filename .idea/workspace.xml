@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2329daf6-e4b3-47ad-8e2c-abba4913ef24" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/DataLoader-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/DataLoader-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JupyterNotebooks/DataLoader.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/DataLoader.ipynb" afterDir="false" />
     </list>
@@ -17,7 +18,7 @@
         <entry file="file://$PROJECT_DIR$/JupyterNotebooks/DataLoader.ipynb">
           <provider selected="true" editor-type-id="ipnb-editor">
             <state>
-              <selected id="6" />
+              <selected id="7" />
             </state>
           </provider>
         </entry>
@@ -38,13 +39,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/JupyterNotebooks/DataLoader.ipynb" />
+        <option value="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/DataLoader-checkpoint.ipynb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="344" />
-    <option name="y" value="26" />
-    <option name="width" value="1400" />
+    <option name="x" value="313" />
+    <option name="y" value="34" />
+    <option name="width" value="1399" />
     <option name="height" value="827" />
   </component>
   <component name="ProjectView">
@@ -125,10 +127,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="344" y="26" width="1400" height="827" extended-state="0" />
+    <frame x="313" y="34" width="1399" height="827" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24945135" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -162,14 +164,14 @@
     <entry file="file://$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/DataLoader-checkpoint.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
-          <selected id="4" />
+          <selected id="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JupyterNotebooks/DataLoader.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
-          <selected id="6" />
+          <selected id="7" />
         </state>
       </provider>
     </entry>
