@@ -25,20 +25,23 @@ data = ImageList.from_df(df, path_jpg)
 
 train_idx = df.index[df['split']=='train']
 valid_idx = df.index[df['split']=='validate']
-
+tfms = None
+size = 448
+bs = 16
 data = (ImageList.from_df(df, path_jpg)
         .split_by_idxs(train_idx, valid_idx)
-        .label_from_df(label_delim=',')
-        .transform('', size=224)
-        .databunch(bs=64)
+        .label_from_df(cols='labels')
+        .transform(tfms=tfms, size=size, resize_method=ResizeMethod.SQUISH)
+        .databunch(bs=bs)
         .normalize(imagenet_stats))
 
 
 # In[11]:
 
-
-learn = cnn_learner(data, models.densenet121, metrics=[error_rate, accuracy], callback_fns=[CSVLogger])
-
+arch = models.densenet161
+learn = cnn_learner(data, arch, metrics=[error_rate, accuracy], callback_fns=[CSVLogger])
+#learn.load('baseline_model_stage1/bestmodel_1')
+#learn.unfreeze()
 
 # In[6]:
 
@@ -48,11 +51,6 @@ learn = cnn_learner(data, models.densenet121, metrics=[error_rate, accuracy], ca
 
 
 # In[7]:
-print('normal')
-print(torch.cuda.current_device())
-print(torch.cuda.device(0))
-print(torch.cuda.get_device_name(0))
-print(torch.cuda.device_count())
-lr = 0.01
-learn.fit_one_cycle(100, slice(lr), callbacks=[SaveModelCallback(learn, every='epoch', monitor='accuracy')])
+#learn.fit_one_cycle(10, max_lr=slice(1e-5,1e-4), callbacks=[SaveModelCallback(learn, every='epoch', monitor='accuracy')])
+learn.fit_one_cycle(20, callbacks=[SaveModelCallback(learn, every='epoch', monitor='accuracy')])
 
