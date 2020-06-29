@@ -27,7 +27,7 @@ train_idx = df.index[df['split']=='train']
 valid_idx = df.index[df['split']=='validate']
 tfms = None
 size = 448
-bs = 16
+bs = 8
 data = (ImageList.from_df(df, path_jpg)
         .split_by_idxs(train_idx, valid_idx)
         .label_from_df(cols='labels')
