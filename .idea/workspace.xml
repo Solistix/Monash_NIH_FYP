@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2329daf6-e4b3-47ad-8e2c-abba4913ef24" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/layers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/Baseline_CS-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/Baseline_CS-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/PCTestingCS-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/PCTestingCS-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JupyterNotebooks/Baseline_CS.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/Baseline_CS.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JupyterNotebooks/PCTestingCS.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/PCTestingCS.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jupyter Notebook" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -22,11 +29,15 @@
   </component>
   <component name="JupyterTrust" id="2653e402-3103-437a-9cec-23fb4f6c0b38" />
   <component name="ProjectId" id="1e01gsI0C1VeSlyjiP7fI05Qnbh" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -71,12 +82,16 @@
       <option name="presentableId" value="Default" />
       <updated>1589025158147</updated>
       <workItem from="1593449210935" duration="3887000" />
-      <workItem from="1593495151693" duration="774000" />
+      <workItem from="1593495151693" duration="1010000" />
+      <workItem from="1593517529127" duration="10493000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1877" height="266" key="GridCell.Tab.0.bottom" timestamp="1593450172495">
