@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2329daf6-e4b3-47ad-8e2c-abba4913ef24" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/JupyterNotebooks/PCTestingCS.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Monash_NIH_FYP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Monash_NIH_FYP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JupyterNotebooks/Baseline_CS.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/Baseline_CS.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/PCTestingCS-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/PCTestingCS-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JupyterNotebooks/PCTestingCS.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/PCTestingCS.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +33,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/JupyterNotebooks" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -74,17 +71,9 @@
       <option name="presentableId" value="Default" />
       <updated>1589025158147</updated>
       <workItem from="1593449210935" duration="3887000" />
+      <workItem from="1593495151693" duration="774000" />
     </task>
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
@@ -106,9 +95,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="266" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593450172495" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1593449273438">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1593495259574">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593449273438" />
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593495259574" />
   </component>
 </project>
