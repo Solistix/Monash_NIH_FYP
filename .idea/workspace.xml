@@ -2,35 +2,112 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2329daf6-e4b3-47ad-8e2c-abba4913ef24" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/layers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/100_shot/CreateSplits.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/split_scripts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Monash_NIH_FYP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Monash_NIH_FYP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/Baseline_CS-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/Baseline_CS-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/PCTestingCS-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/.ipynb_checkpoints/PCTestingCS-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JupyterNotebooks/Baseline_CS.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/Baseline_CS.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JupyterNotebooks/PCTestingCS.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/PCTestingCS.ipynb" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/split_scripts.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="193">
+              <caret line="174" column="7" selection-start-line="174" selection-start-column="7" selection-end-line="174" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/100_shot/CreateSplits.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="0" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jupyter Notebook" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/100_shot/DataLoader.ipynb" />
+        <option value="$PROJECT_DIR$/100_shot/CreateSplits.ipynb" />
+        <option value="$PROJECT_DIR$/scripts/split_scripts.py" />
+      </list>
+    </option>
+  </component>
   <component name="JupyterTrust" id="2653e402-3103-437a-9cec-23fb4f6c0b38" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="487" />
+    <option name="y" value="127" />
+    <option name="width" value="1399" />
+    <option name="height" value="827" />
+  </component>
   <component name="ProjectId" id="1e01gsI0C1VeSlyjiP7fI05Qnbh" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Monash_NIH_FYP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Monash_NIH_FYP" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Monash_NIH_FYP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Monash_NIH_FYP" type="462c0819:PsiDirectoryNode" />
+              <item name="100_shot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Monash_NIH_FYP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Monash_NIH_FYP" type="462c0819:PsiDirectoryNode" />
+              <item name="JupyterNotebooks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Monash_NIH_FYP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Monash_NIH_FYP" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Monash_NIH_FYP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Monash_NIH_FYP" type="462c0819:PsiDirectoryNode" />
+              <item name="splits" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -44,13 +121,25 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/JupyterNotebooks" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Documents\GitHub\Monash_NIH_FYP\JupyterNotebooks" />
       <recent name="$PROJECT_DIR$/JupyterNotebooks" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="Monash_NIH_FYP" type="JupiterNotebook" factoryName="Jupyter Notebook">
@@ -87,11 +176,31 @@
     </task>
     <servers />
   </component>
+  <component name="ToolWindowManager">
+    <frame x="487" y="127" width="1399" height="827" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3295129" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1877" height="266" key="GridCell.Tab.0.bottom" timestamp="1593450172495">
@@ -114,5 +223,31 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593495259574" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/100_shot/DataLoader.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/split_scripts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="174" column="7" selection-start-line="174" selection-start-column="7" selection-end-line="174" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/100_shot/CreateSplits.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
