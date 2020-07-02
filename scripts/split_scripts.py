@@ -11,6 +11,7 @@ def create_splits(k_shot):
         Removes disagreeing samples and multi-class samples
         Removes the Pleural Other Class
         Keeps only Antero-posterior oriented samples
+        Undersamples the No Finding class to 5000 samples
         Exports the splits into a csv file
 
     Input:
@@ -111,6 +112,11 @@ def create_splits(k_shot):
 
         # Base Classes
         if label not in novel_labels:
+
+            # Undersample the 'No Finding' Class to 5000 samples
+            if label == 'No Finding':
+                df_unsplit = df_unsplit.sample(5000, random_state=1)
+
             df_train = df_unsplit.sample(frac=0.8, random_state=1)
             df_validate = df_unsplit.drop(df_train.index)
 
