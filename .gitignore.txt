@@ -1,1 +1,1 @@
-100_shot/baseline/stage1.pth
+./100_shot/baseline/stage1.pth
