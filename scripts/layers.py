@@ -32,7 +32,7 @@ class CosineSimilarityLayer(nn.Module):
 
     def forward(self, input):
         # w = weight, x = input
-        constant = torch.pow(torch.tensor([self.eps]), 2)
+        constant = torch.pow(torch.tensor([self.eps]).cuda(), 2)
         w_x = torch.addmm(constant, input, self.weight.t())
 
         # Sqrt of Sum of Squares
