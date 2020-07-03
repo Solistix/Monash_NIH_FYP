@@ -1,4 +1,13 @@
-Stage 1
-lr = 3e-3
+Parameters
 model = DenseNet161
+size = 224
+bs = 16
+tfms = None
+
+Stage 1
 epoch = 8
+lr = 3e-3
+
+Stage 2
+epoch = 7
+lr = 1e-6 -> 3e-4
