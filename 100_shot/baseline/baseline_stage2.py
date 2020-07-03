@@ -19,8 +19,9 @@ learn = cnn_learner(data, arch, metrics=[error_rate, accuracy, AUROC()],
                     loss_func=torch.nn.CrossEntropyLoss(weight=weight), callback_fns=[CSVLogger])
 
 # Load Model and Unfreeze parameters for fine-tuning
-learn.load('baseline_model_stage1/bestmodel_3') # IMPORTANT NEED TO SELECT MODEL
+model_path = '../../../../../home/ilu3/rl80/Monash_NIH_FYP/100_shot/baseline/stage1'
+learn = learn.load(model_path)
 learn.unfreeze()
-
-learn.model = learn.model.cuda() # IMPORTANT NEED TO SELECT LR
-learn.fit_one_cycle(10, max_lr=slice(lr, 3e-4), callbacks=[SaveModelCallback(learn, every='epoch', monitor='accuracy')])
+learn.model = learn.model.cuda()
+lr = 1e-6
+learn.fit_one_cycle(30, max_lr=slice(lr, 3e-4), callbacks=[SaveModelCallback(learn, every='epoch', monitor='accuracy')])

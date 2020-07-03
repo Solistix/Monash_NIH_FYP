@@ -1,0 +1,4 @@
+Stage 1
+lr = 3e-3
+model = DenseNet161
+epoch = 8

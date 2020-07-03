@@ -19,10 +19,11 @@ learn = cnn_learner(data, arch, metrics=[error_rate, accuracy, AUROC()],
                     loss_func=torch.nn.CrossEntropyLoss(weight=weight), callback_fns=[CSVLogger])
 
 # Load model and get learning rate curve
-learn.load('baseline_model_stage1/bestmodel_3') # IMPORTANT NEED TO SELECT MODEL
+model_path = '../../../../../home/ilu3/rl80/Monash_NIH_FYP/100_shot/baseline/stage1'
+learn = learn.load(model_path)
 learn.unfreeze()
 
 learn.lr_find()
 fig = learn.recorder.plot(return_fig=True)
-fig.savefig('stage1_lr.jpg')
+fig.savefig('./stage1_lr.jpg')
 

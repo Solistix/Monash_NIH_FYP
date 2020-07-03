@@ -18,5 +18,7 @@ arch = models.densenet161
 learn = cnn_learner(data, arch, metrics=[error_rate, accuracy, AUROC()],
                     loss_func=torch.nn.CrossEntropyLoss(weight=weight), callback_fns=[CSVLogger])
 
+# Train model
 learn.model = learn.model.cuda()
-learn.fit_one_cycle(10, callbacks=[SaveModelCallback(learn, every='epoch', monitor='accuracy')])
+lr = 3e-3
+learn.fit_one_cycle(30, slice(lr), callbacks=[SaveModelCallback(learn, every='epoch', monitor='accuracy')])

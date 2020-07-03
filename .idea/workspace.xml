@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2329daf6-e4b3-47ad-8e2c-abba4913ef24" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/100_shot/baseline/baseline_stage1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/100_shot/baseline/baseline_stage1_lr.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/100_shot/baseline/baseline_stage2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Monash_NIH_FYP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Monash_NIH_FYP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/100_shot/.ipynb_checkpoints/CreateSplits-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/.ipynb_checkpoints/CreateSplits-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/100_shot/CreateSplits.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/CreateSplits.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/100_shot/baseline/.ipynb_checkpoints/Baseline-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/baseline/.ipynb_checkpoints/Baseline-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/100_shot/baseline/Baseline.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/baseline/Baseline.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/100_shot/splits.csv" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/splits.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/split_scripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/split_scripts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/100_shot/baseline/baseline_stage1.py" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/baseline/baseline_stage1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/100_shot/baseline/baseline_stage1_lr.py" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/baseline/baseline_stage1_lr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/100_shot/baseline/baseline_stage2.py" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/baseline/baseline_stage2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +14,41 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="97" lean-forward="true" selection-start-line="18" selection-start-column="97" selection-end-line="18" selection-end-column="97" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/100_shot/baseline/Baseline.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="29" column="6" lean-forward="true" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/100_shot/baseline/Baseline.ipynb">
           <provider selected="true" editor-type-id="ipnb-editor">
             <state>
@@ -49,8 +74,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/scripts/split_scripts.py" />
-        <option value="$PROJECT_DIR$/100_shot/baseline/baseline_stage1.py" />
         <option value="$PROJECT_DIR$/JupyterNotebooks/Baseline_lr.py" />
+        <option value="$PROJECT_DIR$/100_shot/baseline/baseline_stage1.py" />
         <option value="$PROJECT_DIR$/100_shot/baseline/baseline_stage1_lr.py" />
         <option value="$PROJECT_DIR$/100_shot/baseline/baseline_stage2.py" />
       </list>
@@ -58,8 +83,8 @@
   </component>
   <component name="JupyterTrust" id="2653e402-3103-437a-9cec-23fb4f6c0b38" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="323" />
-    <option name="y" value="76" />
+    <option name="x" value="305" />
+    <option name="y" value="26" />
     <option name="width" value="1399" />
     <option name="height" value="827" />
   </component>
@@ -72,6 +97,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -115,7 +141,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -151,7 +176,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.baseline_stage1_lr">
     <configuration name="Monash_NIH_FYP" type="JupiterNotebook" factoryName="Jupyter Notebook">
       <module name="Monash_NIH_FYP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -169,6 +194,32 @@
       <option name="ipnbPort" value="8888" />
       <method v="2" />
     </configuration>
+    <configuration name="baseline_stage1_lr" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Monash_NIH_FYP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/100_shot/baseline" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/100_shot/baseline/baseline_stage1_lr.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.baseline_stage1_lr" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -188,14 +239,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="323" y="76" width="1399" height="827" extended-state="0" />
-    <editor active="true" />
+    <frame x="305" y="26" width="1399" height="827" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3295129" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3295129" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -253,33 +303,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage1_lr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="80" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/data_scripts.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -313,10 +336,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline/Baseline.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="29" column="6" lean-forward="true" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/100_shot/baseline/Baseline.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage1_lr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="97" lean-forward="true" selection-start-line="18" selection-start-column="97" selection-end-line="18" selection-end-column="97" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
