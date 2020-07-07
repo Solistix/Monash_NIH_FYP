@@ -1,0 +1,13 @@
+Parameters
+model = DenseNet161
+size = 224
+bs = 16
+tfms = None
+
+Stage 1
+epoch = 11
+lr = 8e-3
+
+Stage 2
+epoch = 50
+lr = 1e-5 -> 2e-4

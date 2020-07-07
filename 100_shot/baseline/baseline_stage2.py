@@ -24,4 +24,4 @@ learn = learn.load(model_path)
 learn.unfreeze()
 learn.model = learn.model.cuda()
 lr = 1e-6
-learn.fit_one_cycle(30, max_lr=slice(lr, 3e-4), callbacks=[SaveModelCallback(learn, every='epoch', monitor='accuracy')])
+learn.fit_one_cycle(30, max_lr=slice(lr, 1e-4), callbacks=[SaveModelCallback(learn, every='epoch', monitor='accuracy')])

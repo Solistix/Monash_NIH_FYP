@@ -4,10 +4,14 @@ size = 224
 bs = 16
 tfms = None
 
-Stage 1
+Stage 1 - Base Set Training
 epoch = 8
 lr = 3e-3
 
-Stage 2
+Stage 2 - Base Set Fine Tuning
 epoch = 7
-lr = 1e-6 -> 3e-4
+lr = 1e-6 -> 1e-4
+
+Stage 3 - Novel Set Training
+epoch = 14
+lr = 3e-3
