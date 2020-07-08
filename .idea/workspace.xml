@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2329daf6-e4b3-47ad-8e2c-abba4913ef24" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/100_shot/baseline/baseline_stage3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/100_shot/baseline_nc/baseline_nc_results.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/100_shot/baseline_nc/baseline_nc_stage3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/100_shot/baseline/.ipynb_checkpoints/Baseline-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/baseline/.ipynb_checkpoints/Baseline-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/100_shot/baseline/Baseline.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/baseline/Baseline.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/100_shot/baseline/baseline_stage2.py" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/baseline/baseline_stage2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/100_shot/baseline/models.txt" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/baseline/models.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/100_shot/baseline_cs/.ipynb_checkpoints/Baseline_CS-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/baseline_cs/.ipynb_checkpoints/Baseline_CS-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/100_shot/baseline_cs/Baseline_CS.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/baseline_cs/Baseline_CS.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/100_shot/baseline_cs/stage0_lr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/100_shot/baseline_nc/Baseline.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/100_shot/baseline_nc/Baseline.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models.txt" beforeDir="false" afterPath="$PROJECT_DIR$/models/models.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,12 +16,33 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage2_convert.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/100_shot/baseline_nc/Baseline.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="0" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage3.py">
+        <entry file="file://$PROJECT_DIR$/100_shot/baseline_nc/baseline_nc_results.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="28" column="32" lean-forward="true" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+              <caret line="28" column="59" lean-forward="true" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -64,13 +81,17 @@
         <option value="$PROJECT_DIR$/100_shot/baseline/baseline_stage3.py" />
         <option value="$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage3.py" />
         <option value="$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage2_lr.py" />
+        <option value="$PROJECT_DIR$/100_shot/baseline_nc/models/baseline_nc_stage3.py" />
+        <option value="$PROJECT_DIR$/100_shot/baseline_nc/baseline_nc_stage3.py" />
+        <option value="$PROJECT_DIR$/100_shot/baseline_nc/Baseline.ipynb" />
+        <option value="$PROJECT_DIR$/100_shot/baseline_nc/baseline_nc_results.py" />
       </list>
     </option>
   </component>
   <component name="JupyterTrust" id="2653e402-3103-437a-9cec-23fb4f6c0b38" />
   <component name="ProjectFrameBounds">
     <option name="x" value="183" />
-    <option name="y" value="216" />
+    <option name="y" value="59" />
     <option name="width" value="1399" />
     <option name="height" value="834" />
   </component>
@@ -106,7 +127,7 @@
               <item name="Monash_NIH_FYP" type="b2602c69:ProjectViewProjectNode" />
               <item name="Monash_NIH_FYP" type="462c0819:PsiDirectoryNode" />
               <item name="100_shot" type="462c0819:PsiDirectoryNode" />
-              <item name="baseline_cs" type="462c0819:PsiDirectoryNode" />
+              <item name="baseline_nc" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Monash_NIH_FYP" type="b2602c69:ProjectViewProjectNode" />
@@ -139,6 +160,9 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/100_shot/baseline_nc" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/100_shot/baseline" />
       <recent name="F:\Documents\GitHub\Monash_NIH_FYP\JupyterNotebooks" />
@@ -157,7 +181,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.baseline_cs_stage2_lr">
+  <component name="RunManager" selected="Python.baseline_nc_results">
     <configuration name="Monash_NIH_FYP" type="JupiterNotebook" factoryName="Jupyter Notebook">
       <module name="Monash_NIH_FYP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -238,7 +262,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="baseline_stage2_convert" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="baseline_nc_results" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Monash_NIH_FYP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -246,11 +270,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/100_shot/baseline" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/100_shot/baseline_nc" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/100_shot/baseline/baseline_stage2_convert.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/100_shot/baseline_nc/baseline_nc_results.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -259,7 +283,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="baseline_stage2_lr" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="baseline_nc_stage3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Monash_NIH_FYP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -267,11 +291,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/100_shot/baseline" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/100_shot/baseline_nc" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/100_shot/baseline/baseline_stage2_lr.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/100_shot/baseline_nc/baseline_nc_stage3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -282,11 +306,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.baseline_nc_results" />
+        <item itemvalue="Python.baseline_nc_stage3" />
         <item itemvalue="Python.baseline_cs_stage2_lr" />
         <item itemvalue="Python.baseline_cs_stage2_convert" />
         <item itemvalue="Python.baseline_cs_stage1_lr" />
-        <item itemvalue="Python.baseline_stage2_lr" />
-        <item itemvalue="Python.baseline_stage2_convert" />
       </list>
     </recent_temporary>
   </component>
@@ -308,7 +332,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="26" width="1399" height="834" extended-state="0" />
+    <frame x="183" y="59" width="1399" height="834" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -361,23 +385,6 @@
           <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/100_shot/CreateSplits.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/data_scripts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -493,10 +500,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage2.py">
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage2_lr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline/history_stage3.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage2_lr.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="22" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/data_scripts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/100_shot/CreateSplits.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="25" column="40" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline_nc/baseline_nc_stage3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
@@ -513,40 +594,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage2_lr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline_nc/Baseline.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/100_shot/baseline/baseline_stage3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage2_lr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-115">
-          <caret line="6" column="34" lean-forward="true" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage3.py">
+    <entry file="file://$PROJECT_DIR$/100_shot/baseline_nc/baseline_nc_results.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="28" column="32" lean-forward="true" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+          <caret line="28" column="59" lean-forward="true" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
