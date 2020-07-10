@@ -32,8 +32,6 @@ for group in learn.layer_groups:
 
 requires_grad(learn.layer_groups[-1][-1], True)
 
-# Get Learning Rate
-learn.lr_find()
-fig = learn.recorder.plot(return_fig=True)
-fig.savefig('./stage2_lr.jpg')
-
+# Train the model
+learn.model = learn.model.cuda()
+learn.fit_one_cycle(60, slice(3e-1), callbacks=[SaveModelCallback(learn, every='epoch', monitor='accuracy')])

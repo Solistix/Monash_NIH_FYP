@@ -8,6 +8,10 @@ Stage 1
 epoch = 11
 lr = 8e-3
 
-Stage 2
+Stage 2 - Skip Stage
 epoch = 50
 lr = 1e-5 -> 2e-4
+
+Stage 3 - From Stage 1
+epoch = 9
+lr = 1e-2
