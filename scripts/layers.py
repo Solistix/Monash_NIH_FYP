@@ -3,7 +3,7 @@ import torch.nn as nn
 import math
 
 
-class CosineSimilarityLayer(nn.Module):
+class CosineSimilarity(nn.Module):
     """
     Adapted from: https://pytorch.org/docs/master/_modules/torch/nn/modules/linear.html#Linear
     Date: 29/06/2020
