@@ -27,6 +27,26 @@ class MimicCxrJpg(Dataset):
                                              transforms.ToTensor()
                                              ])
 
+        if mode == 'base_train' or mode == 'base_validate':
+            self.dict_labels = {
+                'Atelectasis': 0,
+                'Cardiomegaly': 1,
+                'Consolidation': 2,
+                'Edema': 3,
+                'Fracture': 4,
+                'Lung Opacity': 5,
+                'No Finding': 6,
+                'Pneumonia': 7,
+                'Pneumothorax': 8,
+                'Support Devices': 9
+            }
+        else:
+            self.dict_labels = {
+                'Enlarged Cardiomediastinum': 0,
+                'Lung Lesion': 1,
+                'Pleural Effusion': 2,
+            }
+
     def __len__(self):
         return len(self.data)
 
@@ -38,7 +58,7 @@ class MimicCxrJpg(Dataset):
         img_tensor = self.transform(img_path)
         label = self.data.iloc[idx, 1]
 
-        return (img_tensor, label)
+        return img_tensor, self.dict_labels[label]
 
 
 if __name__ == '__main__':
