@@ -82,6 +82,7 @@ if __name__ == '__main__':
     num_workers = 12
     bs = 64
     n_way = 10
+    path_splits = '../splits/20_shot.csv'  # Location of preprocessed splits
     path_results = '../../results/basic.csv'  # Full path to save the CSV results
     path_models = '../../models/basic'  # Folder path to save the trained models to
     save_models = True  # Whether to save the trained models (Occurs every epoch)
@@ -89,14 +90,19 @@ if __name__ == '__main__':
     torch.cuda.set_device(0)
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = BaselineNet(n_way).to(device)
-    criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.0001)
+
+    # Get weights for weighted cross entropy loss
+    num_sample = [2592, 2850, 388, 1926, 328, 4327, 4000, 762, 823, 1860]
+    max_sample = max(num_sample)
+    weight = torch.FloatTensor([max_sample / x for x in num_sample]).to(device)
+    criterion = nn.CrossEntropyLoss(weight=weight)
 
     # Load in data
     train_dataset = MimicCxrJpg(root='../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/files/',
-                                csv_path='./splits.csv', mode='base_train', resize=224)
+                                csv_path=path_splits, mode='base_train', resize=224)
     test_dataset = MimicCxrJpg(root='../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/files/',
-                               csv_path='./splits.csv', mode='base_validate', resize=224)
+                               csv_path=path_splits, mode='base_validate', resize=224)
     train_loader = DataLoader(train_dataset, batch_size=bs, shuffle=True, num_workers=num_workers)
     test_loader = DataLoader(test_dataset, batch_size=bs, shuffle=True, num_workers=num_workers)
 
