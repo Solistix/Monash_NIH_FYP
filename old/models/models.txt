@@ -1,0 +1,8 @@
+baselineA1
+arch = models.densenet121
+stage1_lr = 3e-3
+size = 224
+stage2_lr = slice(1e-5, 1e-4)
+
+Universal Models
+
