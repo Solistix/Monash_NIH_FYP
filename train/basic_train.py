@@ -7,8 +7,16 @@ from shared.models import *
 from shared.datasets import *
 
 
-def train(model, train_loader, criterion, device, optimizer):
+def train(model, train_loader, criterion, device, optimizer, freeze=False):
+    # freeze accepts a list and represents the layers not to freeze
     model.train()
+
+    # Freeze all layers except those indicated
+    if freeze:
+        for name, param in model.named_parameters():
+            if name not in freeze:
+                param.requires_grad = False
+
     train_loss = 0
     for step, (data_inputs, data_labels) in enumerate(train_loader):
         inputs, labels = data_inputs.to(device), data_labels.to(device)  # Convert Tensors to appropriate device
@@ -19,7 +27,7 @@ def train(model, train_loader, criterion, device, optimizer):
         optimizer.step()
         train_loss += loss.item()  # Running training loss
 
-    return train_loss / step
+    return train_loss / (step+1)
 
 
 def test(model, test_loader, criterion, device, n_way):
@@ -73,7 +81,7 @@ def test(model, test_loader, criterion, device, n_way):
         macro_accuracy = macro_acc_sum / n_way
         f1_score = f1_sum / n_way
 
-    return val_loss / step, accuracy, macro_accuracy, f1_score, class_f1
+    return val_loss / (step+1), accuracy, macro_accuracy, f1_score, class_f1
 
 
 if __name__ == '__main__':

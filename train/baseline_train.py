@@ -1,52 +1,62 @@
-import torch.optim as optim
-from torch.utils.data import DataLoader
-import sys
+from basic_train import *
 
-sys.path.append('..')
-from shared.models import *
-from shared.datasets import *
 
-num_epochs = 2
-num_workers = 8
-bs = 64
-torch.cuda.set_device(0)
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-model = BaselineNet(10).to(device)
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.0001)
+def main():
+    # Set Training Parameters
+    num_epochs = 100
+    num_workers = 12
+    bs = 64
+    n_way = 3
+    path_splits = '../splits/20_shot.csv'  # Location of preprocessed splits
+    path_results = '../../results/20shot_baseline.csv'  # Full path to save the CSV results
+    path_models = '../../models/baseline/20_shot'  # Folder path to save the trained models to
+    path_pretrained = '../results/basic/basic_16.pth'
+    save_models = True  # Whether to save the trained models (Occurs every epoch)
+    freeze = ['linear.weight', 'linear.bias']  # Freeze all layers except linear layers
 
-train_dataset = MimicCxrJpg(root='../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/files/',
-                            csv_path='./splits.csv', mode='base_train', resize=224)
-test_dataset = MimicCxrJpg(root='../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/files/',
-                           csv_path='./splits.csv', mode='base_validate', resize=224)
-train_loader = DataLoader(train_dataset, batch_size=bs, shuffle=True, num_workers=num_workers)
-test_loader = DataLoader(test_dataset, batch_size=bs, shuffle=True, num_workers=num_workers)
+    torch.cuda.set_device(0)
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-for epoch in range(num_epochs):
-    model.train()
-    train_loss = 0
-    for k, (data_inputs, data_labels) in enumerate(train_loader):
-        inputs, labels = data_inputs.to(device), data_labels.to(device)
-        # Set gradient to 0.
-        optimizer.zero_grad()
-        # Feed forward.
-        pred = model(inputs)
-        # Loss calculation.
-        loss = criterion(pred, labels)
-        # Gradient calculation.
-        loss.backward()
-        optimizer.step()
+    # Load in model
+    model = BaselineNet(n_way).to(device)
+    pretrained_dict = torch.load(path_pretrained)
+    del pretrained_dict['linear.weight']  # Remove the last linear layer
+    del pretrained_dict['linear.bias']
+    model_dict = model.state_dict()
+    model_dict.update(pretrained_dict)
+    model.load_state_dict(model_dict)
 
-        # print statistics
-        train_loss += loss.item()
+    optimizer = optim.Adam(model.parameters(), lr=0.0001)
+    criterion = nn.CrossEntropyLoss()
 
-    model.eval()
-    with torch.no_grad():
-        val_loss = 0
-        for k, (data_inputs, data_labels) in enumerate(test_loader):
-            inputs, labels = data_inputs.to(device), data_labels.to(device)
-            pred = model(inputs)
-            loss = criterion(pred, labels)
-            val_loss += loss.item()
+    # Load in data
+    train_dataset = MimicCxrJpg(root='../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/files/',
+                                csv_path=path_splits, mode='novel_train', resize=224)
+    test_dataset = MimicCxrJpg(root='../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/files/',
+                               csv_path=path_splits, mode='novel_validate', resize=224)
+    train_loader = DataLoader(train_dataset, batch_size=bs, shuffle=True, num_workers=num_workers)
+    test_loader = DataLoader(test_dataset, batch_size=bs, shuffle=True, num_workers=num_workers)
 
-    print(f'[{epoch + 1}] loss: {train_loss / k}')
+    # Create Dataframe to export results to CSV
+    df_results = pd.DataFrame(columns=['Epoch', 'Training Loss', 'Validation Loss', 'Accuracy', 'Macro Accuracy',
+                                       'Macro-F1 Score'] + [str(x) + ' F1' for x in range(n_way)])
+
+    # Training Loop
+    for epoch in range(num_epochs):
+        train_loss = train(model, train_loader, criterion, device, optimizer, freeze=freeze)
+        val_loss, acc, m_acc, macro_f1, class_f1 = test(model, test_loader, criterion, device, n_way)
+
+        if (save_models):
+            torch.save(model.state_dict(), os.path.join(path_models, f'baseline_{epoch + 1}.pth'))  # Save the model
+
+        # Append and report results
+        df_results.loc[epoch] = [epoch + 1, train_loss, val_loss, acc, m_acc, macro_f1] + class_f1
+        print(
+            f'[{epoch + 1}] t_loss: {train_loss:.5f} v_loss: {val_loss:.5f} val_acc: {acc:.5f} '
+            f'val_m_acc: {m_acc:.5f} f1: {macro_f1:.5f}')
+
+    df_results.to_csv(path_results, index=False)  # Export results to a CSV file
+
+
+if __name__ == '__main__':
+    main()
