@@ -7,7 +7,7 @@ def main():
     num_workers = 12
     bs = 64
     n_way = 3
-    path_pretrained = '../results/basic/basic_16.pth'
+    path_pretrained = '../results/basic_cosine/basic_cosine_58.pth'
     save_models = True  # Whether to save the trained models (Occurs every epoch)
     freeze = ['cos_sim.weight']  # Freeze all layers except linear layers
     k_shot = 20  # Must have the generated split to match it
@@ -22,8 +22,7 @@ def main():
     # Load in model
     model = CosineSimilarityNet(n_way).to(device)
     pretrained_dict = torch.load(path_pretrained)
-    del pretrained_dict['linear.weight']  # Remove the last linear layer
-    del pretrained_dict['linear.bias']
+    del pretrained_dict['cos_sim.weight']  # Remove the last layer
     model_dict = model.state_dict()
     model_dict.update(pretrained_dict)
     model.load_state_dict(model_dict)
