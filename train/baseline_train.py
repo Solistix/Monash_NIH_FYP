@@ -10,7 +10,7 @@ def main():
     path_splits = '../splits/20_shot.csv'  # Location of preprocessed splits
     path_results = '../../results/20shot_baseline.csv'  # Full path to save the CSV results
     path_models = '../../models/baseline/20_shot'  # Folder path to save the trained models to
-    path_pretrained = '../results/basic/basic_16.pth'
+    path_pretrained = '../results/basic/basic_36.pth'
     save_models = True  # Whether to save the trained models (Occurs every epoch)
     freeze = ['linear.weight', 'linear.bias']  # Freeze all layers except linear layers
 

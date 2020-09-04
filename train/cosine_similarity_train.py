@@ -11,7 +11,7 @@ def main():
     save_models = True  # Whether to save the trained models (Occurs every epoch)
     freeze = ['cos_sim.weight']  # Freeze all layers except linear layers
     k_shot = 20  # Must have the generated split to match it
-    lr = 1e-2
+    lr = 1e-3
 
     path_splits = f'../splits/{k_shot}_shot.csv'  # Location of preprocessed splits
     path_results = f'../../results/{k_shot}shot_cosine.csv'  # Full path to save the CSV results
