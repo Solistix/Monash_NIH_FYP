@@ -1,0 +1,4 @@
+These are the results using basic16 and basic_cosine58 (ie. epochs)
+I found better epochs to use.
+
+Also basic is trained on lr = 1e-4, new one is trained on lr = 1e-5

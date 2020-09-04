@@ -75,15 +75,17 @@ class BaselineNet(nn.Module):
         self.flatten = nn.Flatten()
         self.linear = nn.Linear(64 * 14 * 14, n_way)  # 4 Layers of conv_block reduces size 224 to 224/(2^4) = 16
 
-    def forward(self, x):
+    def forward(self, x, extract_features=False):
         x = self.block1(x)
         x = self.block2(x)
         x = self.block3(x)
         x = self.block4(x)
 
         x = self.flatten(x)
+        if extract_features:
+            features = x
         x = self.linear(x)
-        return x
+        return (x, features) if extract_features else x
 
 
 class CosineSimilarityNet(nn.Module):
@@ -98,12 +100,15 @@ class CosineSimilarityNet(nn.Module):
         self.flatten = nn.Flatten()
         self.cos_sim = CosineSimilarity(64 * 14 * 14, n_way)
 
-    def forward(self, x):
+    def forward(self, x, extract_features=False):
         x = self.block1(x)
         x = self.block2(x)
         x = self.block3(x)
         x = self.block4(x)
 
         x = self.flatten(x)
+        if extract_features:
+            features = x
         x = self.cos_sim(x)
-        return x
+
+        return (x, features) if extract_features else x

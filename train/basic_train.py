@@ -98,7 +98,7 @@ if __name__ == '__main__':
     torch.cuda.set_device(0)
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = BaselineNet(n_way).to(device)
-    optimizer = optim.Adam(model.parameters(), lr=0.0001)
+    optimizer = optim.Adam(model.parameters(), lr=1e-5)
 
     # Get weights for weighted cross entropy loss
     num_sample = [2592, 2850, 388, 1926, 328, 4327, 4000, 762, 823, 1860]

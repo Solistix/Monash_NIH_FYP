@@ -7,10 +7,11 @@ def main():
     num_workers = 12
     bs = 64
     n_way = 3
-    path_pretrained = '../results/basic_cosine/basic_cosine_58.pth'
+    path_pretrained = '../results/basic_cosine/basic_cosine_55.pth'
     save_models = True  # Whether to save the trained models (Occurs every epoch)
     freeze = ['cos_sim.weight']  # Freeze all layers except linear layers
     k_shot = 20  # Must have the generated split to match it
+    lr = 1e-2
 
     path_splits = f'../splits/{k_shot}_shot.csv'  # Location of preprocessed splits
     path_results = f'../../results/{k_shot}shot_cosine.csv'  # Full path to save the CSV results
@@ -27,7 +28,7 @@ def main():
     model_dict.update(pretrained_dict)
     model.load_state_dict(model_dict)
 
-    optimizer = optim.Adam(model.parameters(), lr=0.0001)
+    optimizer = optim.Adam(model.parameters(), lr=lr)
     criterion = nn.CrossEntropyLoss()
 
     # Check if the layers to be unfrozen are in the model
