@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import math
+from biobertology import get_biobert
 
 
 # Layers
@@ -112,3 +113,18 @@ class CosineSimilarityNet(nn.Module):
         x = self.cos_sim(x)
 
         return (x, features) if extract_features else x
+
+
+class MultiModalNet(nn.Module):
+    def __init__(self, n_way, path_biobert):
+        super(MultiModalNet, self).__init__()
+        self.baseline = BaselineNet(n_way)
+        self.biobert = get_biobert(model_dir=path_biobert, download=False)
+        self.concat_linear = nn.Linear(13312, n_way) # 12544 + 768 = 13312 from baseline and biobert respectively
+
+    def forward(self, image, text, attention_mask):
+        _, image = self.baseline(image, extract_features=True) # baseline returns: logits, features
+        _, text = self.biobert(text, attention_mask=attention_mask) # biobert returns: sequence output, pooled output
+        x = torch.cat((image,text), 1)
+        x = self.concat_linear(x)
+        return x
