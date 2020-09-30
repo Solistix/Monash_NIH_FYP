@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2329daf6-e4b3-47ad-8e2c-abba4913ef24" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/train/multi_modal_train.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train/semantic_train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shared/datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/shared/datasets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shared/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/shared/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train/.ipynb_checkpoints/biobert-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/train/.ipynb_checkpoints/biobert-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train/biobert.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/train/biobert.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/multi_modal_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/multi_modal_train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,11 +21,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shared/datasets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2051">
-              <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+            <state relative-caret-position="675">
+              <caret line="123" column="40" lean-forward="true" selection-start-line="123" selection-start-column="40" selection-end-line="123" selection-end-column="40" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train/semantic_train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="931">
+              <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/train/biobert.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="0" />
             </state>
           </provider>
         </entry>
@@ -32,20 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train/cosine_similarity_train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="70" selection-start-line="70" selection-end-line="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/train/multi_modal_train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="170" column="26" lean-forward="true" selection-start-line="170" selection-start-column="26" selection-end-line="170" selection-end-column="26" />
-              <folding>
-                <element signature="e#1#28#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="795">
+              <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -53,11 +63,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shared/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1800">
-              <caret line="120" column="42" lean-forward="true" selection-start-line="120" selection-start-column="42" selection-end-line="120" selection-end-column="42" />
+            <state relative-caret-position="481">
+              <caret line="125" column="26" lean-forward="true" selection-start-line="125" selection-start-column="26" selection-end-line="125" selection-end-column="26" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train/basic_train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="13" column="46" lean-forward="true" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train/baseline_train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="24" column="4" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -77,7 +108,10 @@
       <find>f1_flag</find>
       <find>lr</find>
       <find>model</find>
+      <find>transform</find>
+      <find>dataset</find>
       <find>Path</find>
+      <find>pd</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -121,9 +155,10 @@
         <option value="$PROJECT_DIR$/train/nc_cs_train.py" />
         <option value="$PROJECT_DIR$/train/bert.ipynb" />
         <option value="$PROJECT_DIR$/train/biobert.ipynb" />
-        <option value="$PROJECT_DIR$/shared/models.py" />
-        <option value="$PROJECT_DIR$/shared/datasets.py" />
         <option value="$PROJECT_DIR$/train/multi_modal_train.py" />
+        <option value="$PROJECT_DIR$/shared/datasets.py" />
+        <option value="$PROJECT_DIR$/shared/models.py" />
+        <option value="$PROJECT_DIR$/train/semantic_train.py" />
       </list>
     </option>
   </component>
@@ -143,7 +178,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -180,6 +214,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -556,23 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/baseline_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="22" selection-start-line="22" selection-end-line="23" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/basic_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="46" lean-forward="true" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train/basic_cosine_train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1365">
@@ -580,47 +598,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/train/multi_modal_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/train/cosine_similarity_train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="70" selection-start-line="70" selection-end-line="72" />
+        <state relative-caret-position="795">
+          <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="125" column="26" lean-forward="true" selection-start-line="125" selection-start-column="26" selection-end-line="125" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/basic_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="13" column="46" lean-forward="true" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/baseline_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="24" column="4" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/datasets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="123" column="40" lean-forward="true" selection-start-line="123" selection-start-column="40" selection-end-line="123" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/semantic_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="931">
+          <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/train/biobert.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
-          <selected id="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shared/datasets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2051">
-          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shared/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="120" column="42" lean-forward="true" selection-start-line="120" selection-start-column="42" selection-end-line="120" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/multi_modal_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="170" column="26" lean-forward="true" selection-start-line="170" selection-start-column="26" selection-end-line="170" selection-end-column="26" />
-          <folding>
-            <element signature="e#1#28#0" expanded="true" />
-          </folding>
+          <selected id="0" />
         </state>
       </provider>
     </entry>

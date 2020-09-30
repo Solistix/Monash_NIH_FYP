@@ -115,6 +115,18 @@ class CosineSimilarityNet(nn.Module):
         return (x, features) if extract_features else x
 
 
+class SemanticNet(nn.Module):
+    def __init__(self, n_way, path_biobert):
+        super(SemanticNet, self).__init__()
+        self.biobert = get_biobert(model_dir=path_biobert, download=False)
+        self.linear = nn.Linear(768, n_way) # biobert outputs a size 768 tensor
+
+    def forward(self, text, attention_mask):
+        _, x = self.biobert(text, attention_mask=attention_mask) # biobert returns: sequence output, pooled output
+        x = self.linear(x)
+        return x
+
+
 class MultiModalNet(nn.Module):
     def __init__(self, n_way, path_biobert):
         super(MultiModalNet, self).__init__()
