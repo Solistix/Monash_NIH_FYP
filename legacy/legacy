@@ -1,0 +1,2 @@
+legacy files are files that were trained on the old training cycle. ie. only one experiment with training -> validation set.
+New files are for multiple experiments of support (training) -> query (validation)
