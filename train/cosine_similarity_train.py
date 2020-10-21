@@ -22,7 +22,7 @@ def main():
     criterion = nn.CrossEntropyLoss()
 
     # Load in data
-    dataset = NovelMimicCxrJpg(root, path_splits, n_way, k_shot, k_query, num_episodes)
+    dataset = MimicCxrJpgEpisodes(root, path_splits, n_way, k_shot, k_query, num_episodes, 'novel')
     loader = DataLoader(dataset, batch_size=bs, shuffle=True, num_workers=num_workers)
 
     # Create Dataframe to export results to CSV

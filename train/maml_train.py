@@ -1,33 +1,36 @@
-import  torch, os
-import  pandas as pd
-import  numpy as np
-import  scipy.stats
-from    torch.utils.data import DataLoader
-import  sys
+import torch, os
+import pandas as pd
+import numpy as np
+import scipy.stats
+from torch.utils.data import DataLoader
+import sys
 
 sys.path.append('..')
 from shared.datasets import *
 from shared.meta import *
 
 
-def main():
+def main(k_shot):
     n_way = 3
-    k_shot = 20
     k_query = 16
     num_workers = 12
-    train_num_episodes = 10000
-    test_num_episodes = 500
+    train_num_episodes = 50000
+    test_num_episodes = 200
     bs = 1
     root = '../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/files'
     path_splits = '../splits/splits.csv'  # Location of preprocessed splits
-    path_results = '../../results'  # Folder to save the CSV results
+    path_results = f'../../results/{k_shot}shot'  # Folder to save the CSV results
 
-    update_lr = 1e-2 # Learning rate for meta-training
-    meta_lr = 1e-3 # Learning rate for meta-testing
-    update_step = 5 # Number of meta-training update steps
-    update_step_test = 10 # Number of meta-testing update steps
-    imgsz = 224 # Size of images
-    imgc = 1 # Initial image channels
+    # Create results folder if it does not exist
+    if not os.path.exists(path_results):
+        os.makedirs(path_results)
+
+    update_lr = 1e-2  # Learning rate for meta-training
+    meta_lr = 1e-3  # Learning rate for meta-testing
+    update_step = 5  # Number of meta-training update steps
+    update_step_test = 10  # Number of meta-testing update steps
+    imgsz = 224  # Size of images
+    imgc = 1  # Initial image channels
 
     # Learner model configuration
     config = [
@@ -58,8 +61,6 @@ def main():
                 update_step, update_step_test, imgc, imgsz, config).to(device)
     tmp = filter(lambda x: x.requires_grad, maml.parameters())
     num = sum(map(lambda x: np.prod(x.shape), tmp))
-    #print(maml)
-    #print('Total trainable tensors:', num)
 
     # Create batched episode datasets
     mini = MimicCxrJpgEpisodes(root, path_splits, n_way, k_shot, k_query, train_num_episodes, mode="base")
@@ -78,10 +79,7 @@ def main():
 
         accs = maml(x_spt, y_spt, x_qry, y_qry)
 
-        # if step % 30 == 0:
-        #    print('step:', step, '\ttraining acc:', accs)
-
-        if (step+1) % 500 == 0:  # evaluation
+        if (step + 1) % 1000 == 0:  # evaluation
             # Create Dataframe containing results of the multiple episodes
             df_results = pd.DataFrame(columns=['Step', 'Accuracy', 'Macro Accuracy',
                                                'Macro-F1 Score'] + [str(x) + ' F1' for x in range(n_way)])
@@ -96,27 +94,23 @@ def main():
                 df_best = maml.finetunning(x_spt, y_spt, x_qry, y_qry)
                 df_results = df_results.append(df_best.loc[0], ignore_index=True)
 
-            print(f'Step: {step} Test Results')
-            print(df_results[["Step", "Accuracy", "Macro-F1 Score"]])
-
-            # Todo: find if its the best testing scenario
+            # Find average accuracy and average f1 score over the experiments
             average_accuracy = df_results["Accuracy"].mean()
             average_f1 = df_results["Macro-F1 Score"].mean()
+            print(f'Step: {step} Accuracy: {average_accuracy} F1-Score: {average_f1}')  # Print results
 
-            score = 0.5*average_accuracy + 0.5*average_f1
+            # Record best testing results
+            score = 0.5 * average_accuracy + 0.5 * average_f1
             if score > best_score:
                 best_score = score
                 best_step = step
                 df_best_test = df_results
+                # Save consistently due to long training time
+                df_best_test.to_csv(os.path.join(path_results, f'{k_shot}shot_MAML_{best_step}.csv'), index=False)
 
     print(f"Best Step: {best_step}")
 
-    # Create results folder if it does not exist
-    if not os.path.exists(path_results):
-        os.makedirs(path_results)
-
-    df_best_test.to_csv(os.path.join(path_results, f'{k_shot}shot_MAML_{best_step}.csv'), index=False)
-
 
 if __name__ == '__main__':
-    main()
+    print(f'MAML Training {sys.argv[1]} shot')
+    main(int(sys.argv[1]))  # Get the k_shot variable from command line
