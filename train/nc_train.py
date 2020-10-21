@@ -1,81 +1,101 @@
-from basic_train import *
+from baseline_train import *
 
 
 def main():
-    # Set Training Parameters
-    num_workers = 12
-    bs = 64
     n_way = 3
+    k_shot = 20
+    k_query = 16
+    num_episodes = 20
+    num_workers = 12
+    bs = 4
+    root = '../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/files'
+    path_splits = '../splits/splits.csv'  # Location of preprocessed splits
+    path_results = '../../results'  # Folder to save the CSV results
     path_pretrained = '../results/basic/basic_36.pth'
-    save_models = True  # Whether to save the trained models (Occurs every epoch)
-    k_shot = 20  # Must have the generated split to match it
 
-    path_splits = f'../splits/{k_shot}_shot.csv'  # Location of preprocessed splits
-    path_results = f'../../results/{k_shot}shot_nc.csv'  # Full path to save the CSV results
-    path_models = f'../../models/nc/{k_shot}_shot'  # Folder path to save the trained models to
-
+    # Set device to GPU if it exists
     torch.cuda.set_device(0)
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     criterion = nn.CrossEntropyLoss()
 
-    # Load in model
-    model = CosineSimilarityNet(n_way).to(device)
-    pretrained_dict = torch.load(path_pretrained)
-    del pretrained_dict['linear.weight']  # Remove the last layer
-    del pretrained_dict['linear.bias']
-    # del pretrained_dict['cos_sim.weight']
-    model_dict = model.state_dict()
-    model_dict.update(pretrained_dict)
-    model.load_state_dict(model_dict)
-
     # Load in data
-    train_dataset = MimicCxrJpg(root='../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/files/',
-                                csv_path=path_splits, mode='novel_train', resize=224)
-    test_dataset = MimicCxrJpg(root='../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/files/',
-                               csv_path=path_splits, mode='novel_validate', resize=224)
-    train_loader = DataLoader(train_dataset, batch_size=bs, shuffle=True, num_workers=num_workers)
-    test_loader = DataLoader(test_dataset, batch_size=bs, shuffle=True, num_workers=num_workers)
+    dataset = NovelMimicCxrJpg(root, path_splits, n_way, k_shot, k_query, num_episodes)
+    loader = DataLoader(dataset, batch_size=bs, shuffle=True, num_workers=num_workers)
 
     # Create Dataframe to export results to CSV
     df_results = pd.DataFrame(columns=['Validation Loss', 'Accuracy', 'Macro Accuracy',
                                        'Macro-F1 Score'] + [str(x) + ' F1' for x in range(n_way)])
+    df_hold = pd.DataFrame(columns=['Validation Loss', 'Accuracy', 'Macro Accuracy',
+                                    'Macro-F1 Score'] + [str(x) + ' F1' for x in range(n_way)])
 
-    # Find Average Features
-    label_features = [torch.FloatTensor([]).to(device) for i in range(n_way)]
-    model.eval()
-    fc_weight = torch.FloatTensor([]).to(device)  # Initialise weight for the nearest centroid, last layer weight
-    with torch.no_grad():
-        for step, (data_inputs, data_labels) in enumerate(train_loader):
-            # Get Features
-            inputs, labels = data_inputs.to(device), data_labels.to(device)
-            _, features = model(inputs, extract_features=True)
+    # Iterate through batched episodes. One episode is one experiment
+    for step, (support_imgs, support_labels, query_imgs, query_labels) in enumerate(loader):
+        # Convert Tensors to appropriate device
+        batch_support_x, batch_support_y = support_imgs.to(device), support_labels.to(device)
+        batch_query_x, batch_query_y = query_imgs.to(device), query_labels.to(device)
 
-            # Sort features into labels
-            for i in range(features.size(0)):
-                label = labels[i]
-                label_features[label] = torch.cat((label_features[label], features[i][None]))
+        # [num_batch, training_sz, channels, height, width] = support_x.size()
+        # num_batch = num of episodes
+        # training_sz = size of support or query set
+        num_batch = batch_support_x.size(0)  # Number of episodes in the batch
 
-        # Create weight for the last layer
-        for j in range(n_way):
-            feature_avg = torch.mean(label_features[j], 0)
-            fc_weight = torch.cat((fc_weight, feature_avg[None]), 0)
+        # Break down the batch of episodes into single episodes
+        for i in range(num_batch):
+            # Load in model and reset weights every episode/experiment
+            model = CosineSimilarityNet(n_way).to(device)
+            pretrained_dict = torch.load(path_pretrained)
+            del pretrained_dict['linear.weight']  # Remove the last layer
+            del pretrained_dict['linear.bias']
+            model_dict = model.state_dict()
+            model_dict.update(pretrained_dict)
+            model.load_state_dict(model_dict)
 
-        # Apply weight to the model
-        nc_dict = model.state_dict()
-        nc_dict['cos_sim.weight'] = fc_weight
-        model.load_state_dict(nc_dict)
+            # Break down the sets into individual episodes
+            support_x, support_y = batch_support_x[i], batch_support_y[i]
+            query_x, query_y = batch_query_x[i], batch_query_y[i]
 
-    # Testing
-    val_loss, acc, m_acc, macro_f1, class_f1 = test(model, test_loader, criterion, device, n_way)
+            # Find Average Features
+            model.eval()
+            with torch.no_grad():
+                # Initialise list containing features sorted by class
+                label_features = [torch.FloatTensor([]).to(device) for i in range(n_way)]
 
-    if (save_models):
-        torch.save(model.state_dict(), os.path.join(path_models, f'nc.pth'))  # Save the model
+                # Initialise weight for the nearest centroid, last layer weight
+                fc_weight = torch.FloatTensor([]).to(device)
 
-    # Append and report results
-    df_results.loc[0] = [val_loss, acc, m_acc, macro_f1] + class_f1
-    print(f'v_loss: {val_loss:.5f} val_acc: {acc:.5f} val_m_acc: {m_acc:.5f} f1: {macro_f1:.5f}')
+                # Get Features
+                _, features = model(support_x, extract_features=True)
 
-    df_results.to_csv(path_results, index=False)  # Export results to a CSV file
+                # Sort features by labels to be averaged later on
+                for i in range(features.size(0)):
+                    label = support_y[i]
+                    label_features[label] = torch.cat((label_features[label], features[i][None]))
+
+                # Create weight for the last layer
+                for j in range(n_way):
+                    feature_avg = torch.mean(label_features[j], 0)
+                    fc_weight = torch.cat((fc_weight, feature_avg[None]), 0)
+
+                # Apply weight to the model
+                nc_dict = model.state_dict()
+                nc_dict['cos_sim.weight'] = fc_weight
+                model.load_state_dict(nc_dict)
+
+            # Testing
+            val_loss, acc, m_acc, macro_f1, class_f1 = test(query_x, query_y, model, criterion, device, n_way)
+
+            # Print the results per experiment
+            print(f'[v_loss: {val_loss:.5f} val_acc: {acc:.5f} val_m_acc: {m_acc:.5f} f1: {macro_f1:.5f}')
+
+            # Record the experiment to be saved into a CSV
+            df_hold.loc[0] = [val_loss, acc, m_acc, macro_f1] + class_f1
+            df_results = df_results.append(df_hold.loc[0], ignore_index=True)
+
+    # Create results folder if it does not exist
+    if not os.path.exists(path_results):
+        os.makedirs(path_results)
+
+    df_results.to_csv(os.path.join(path_results, f'{k_shot}shot_nc.csv'), index=False)  # Export results to a CSV file
 
 
 if __name__ == '__main__':

@@ -4,8 +4,13 @@ from torch import optim
 from torch.nn import functional as F
 from torch.utils.data import TensorDataset, DataLoader
 from torch import optim
+import pandas as pd
 import numpy as np
 from copy import deepcopy
+import sys
+
+sys.path.append('..')
+from shared.metrics import *
 
 
 # TODO: Need to Reference to https://github.com/dragen1860/MAML-Pytorch
@@ -22,7 +27,6 @@ class Learner(nn.Module):
         :param imgsz:  28 or 84
         """
         super(Learner, self).__init__()
-
 
         self.config = config
 
@@ -83,29 +87,29 @@ class Learner(nn.Module):
 
         for name, param in self.config:
             if name is 'conv2d':
-                tmp = 'conv2d:(ch_in:%d, ch_out:%d, k:%dx%d, stride:%d, padding:%d)'\
-                      %(param[1], param[0], param[2], param[3], param[4], param[5],)
+                tmp = 'conv2d:(ch_in:%d, ch_out:%d, k:%dx%d, stride:%d, padding:%d)' \
+                      % (param[1], param[0], param[2], param[3], param[4], param[5],)
                 info += tmp + '\n'
 
             elif name is 'convt2d':
-                tmp = 'convTranspose2d:(ch_in:%d, ch_out:%d, k:%dx%d, stride:%d, padding:%d)'\
-                      %(param[0], param[1], param[2], param[3], param[4], param[5],)
+                tmp = 'convTranspose2d:(ch_in:%d, ch_out:%d, k:%dx%d, stride:%d, padding:%d)' \
+                      % (param[0], param[1], param[2], param[3], param[4], param[5],)
                 info += tmp + '\n'
 
             elif name is 'linear':
-                tmp = 'linear:(in:%d, out:%d)'%(param[1], param[0])
+                tmp = 'linear:(in:%d, out:%d)' % (param[1], param[0])
                 info += tmp + '\n'
 
             elif name is 'leakyrelu':
-                tmp = 'leakyrelu:(slope:%f)'%(param[0])
+                tmp = 'leakyrelu:(slope:%f)' % (param[0])
                 info += tmp + '\n'
 
 
             elif name is 'avg_pool2d':
-                tmp = 'avg_pool2d:(k:%d, stride:%d, padding:%d)'%(param[0], param[1], param[2])
+                tmp = 'avg_pool2d:(k:%d, stride:%d, padding:%d)' % (param[0], param[1], param[2])
                 info += tmp + '\n'
             elif name is 'max_pool2d':
-                tmp = 'max_pool2d:(k:%d, stride:%d, padding:%d)'%(param[0], param[1], param[2])
+                tmp = 'max_pool2d:(k:%d, stride:%d, padding:%d)' % (param[0], param[1], param[2])
                 info += tmp + '\n'
             elif name in ['flatten', 'tanh', 'relu', 'upsample', 'reshape', 'sigmoid', 'use_logits', 'bn']:
                 tmp = name + ':' + str(tuple(param))
@@ -153,7 +157,7 @@ class Learner(nn.Module):
                 # print('forward:', idx, x.norm().item())
             elif name is 'bn':
                 w, b = vars[idx], vars[idx + 1]
-                running_mean, running_var = self.vars_bn[bn_idx], self.vars_bn[bn_idx+1]
+                running_mean, running_var = self.vars_bn[bn_idx], self.vars_bn[bn_idx + 1]
                 x = F.batch_norm(x, running_mean, running_var, weight=w, bias=b, training=bn_training)
                 idx += 2
                 bn_idx += 2
@@ -212,27 +216,52 @@ class Learner(nn.Module):
         return self.vars
 
 
+def get_metrics(logits_q, querysz, y_qry, n_way):
+    true_positive = list(0. for i in range(n_way))  # Number of correctly predicted samples per class
+    total_truth = list(0. for i in range(n_way))  # Number of ground truths per class
+    predicted_positive = list(0. for i in range(n_way))  # Number of predicted samples per class
+    correct_total = 0  # Total correctly predicted samples
+
+    # Find variables for use in the metrics function
+    _, predicted = torch.max(logits_q, 1)
+    correct = (predicted == y_qry).squeeze()
+    correct_total += (predicted == y_qry).sum().item()
+
+    for i in range(len(predicted)):
+        label = y_qry[i]
+        true_positive[label] += correct[i].item()
+        total_truth[label] += 1
+        predicted_positive[predicted[i].item()] += 1  # True Positive + False Positive
+
+    accuracy, macro_accuracy, f1_score, class_f1 = metrics(true_positive, total_truth,
+                                                           predicted_positive, correct_total, querysz)
+
+    return accuracy, macro_accuracy, f1_score, class_f1
+
+
 class Meta(nn.Module):
     """
     Meta Learner
     """
-    def __init__(self, args, config):
+
+    def __init__(self, update_lr, meta_lr, n_way, k_spt, k_qry, task_num,
+                 update_step, update_step_test, imgc, imgsz, config):
         """
 
         :param args:
         """
         super(Meta, self).__init__()
 
-        self.update_lr = args.update_lr
-        self.meta_lr = args.meta_lr
-        self.n_way = args.n_way
-        self.k_spt = args.k_spt
-        self.k_qry = args.k_qry
-        self.task_num = args.task_num
-        self.update_step = args.update_step
-        self.update_step_test = args.update_step_test
+        self.update_lr = update_lr
+        self.meta_lr = meta_lr
+        self.n_way = n_way
+        self.k_spt = k_spt
+        self.k_qry = k_qry
+        self.task_num = task_num
+        self.update_step = update_step
+        self.update_step_test = update_step_test
 
-        self.net = Learner(config, args.imgc, args.imgsz)
+        self.net = Learner(config, imgc, imgsz)
         self.meta_optim = optim.Adam(self.net.parameters(), lr=self.meta_lr)
 
     def clip_grad_by_norm_(self, grad, max_norm):
@@ -256,7 +285,7 @@ class Meta(nn.Module):
             for g in grad:
                 g.data.mul_(clip_coef)
 
-        return total_norm/counter
+        return total_norm / counter
 
     def forward(self, x_spt, y_spt, x_qry, y_qry):
         """
@@ -322,8 +351,6 @@ class Meta(nn.Module):
                     correct = torch.eq(pred_q, y_qry[i]).sum().item()  # convert to numpy
                     corrects[k + 1] = corrects[k + 1] + correct
 
-
-
         # end of all tasks
         # sum over all losses on query set across all tasks
         loss_q = losses_q[-1] / task_num
@@ -335,7 +362,6 @@ class Meta(nn.Module):
         # for p in self.net.parameters()[:5]:
         # 	print(torch.norm(p).item())
         self.meta_optim.step()
-
 
         accs = np.array(corrects) / (querysz * task_num)
 
@@ -354,8 +380,6 @@ class Meta(nn.Module):
 
         querysz = x_qry.size(0)
 
-        corrects = [0 for _ in range(self.update_step_test + 1)]
-
         # in order to not ruin the state of running_mean/variance and bn_weight/bias
         # we finetunning on the copied model instead of self.net
         net = deepcopy(self.net)
@@ -366,25 +390,40 @@ class Meta(nn.Module):
         grad = torch.autograd.grad(loss, net.parameters())
         fast_weights = list(map(lambda p: p[1] - self.update_lr * p[0], zip(grad, net.parameters())))
 
+        # Keep track of best update/step
+        best_score = 0
+        best_update = 0
+        df_best = pd.DataFrame(columns=['Step', 'Accuracy', 'Macro Accuracy',
+                                        'Macro-F1 Score'] + [str(x) + ' F1' for x in
+                                                             range(self.n_way)])  # Track best epoch
+
         # this is the loss and accuracy before first update
         with torch.no_grad():
             # [setsz, nway]
             logits_q = net(x_qry, net.parameters(), bn_training=True)
-            # [setsz]
-            pred_q = F.softmax(logits_q, dim=1).argmax(dim=1)
-            # scalar
-            correct = torch.eq(pred_q, y_qry).sum().item()
-            corrects[0] = corrects[0] + correct
+
+            # Get metrics for this step
+            accuracy, macro_accuracy, f1_score, class_f1 = get_metrics(logits_q, querysz, y_qry, self.n_way)
+
+            # Find and record best epoch
+            score = 0.5 * accuracy + 0.5 * f1_score
+            if score > best_score:
+                best_score = score
+                df_best.loc[0] = [0, accuracy, macro_accuracy, f1_score] + class_f1
 
         # this is the loss and accuracy after the first update
         with torch.no_grad():
             # [setsz, nway]
             logits_q = net(x_qry, fast_weights, bn_training=True)
-            # [setsz]
-            pred_q = F.softmax(logits_q, dim=1).argmax(dim=1)
-            # scalar
-            correct = torch.eq(pred_q, y_qry).sum().item()
-            corrects[1] = corrects[1] + correct
+
+            # Get metrics for this step
+            accuracy, macro_accuracy, f1_score, class_f1 = get_metrics(logits_q, querysz, y_qry, self.n_way)
+
+            # Find and record best epoch
+            score = 0.5 * accuracy + 0.5 * f1_score
+            if score > best_score:
+                best_score = score
+                df_best.loc[0] = [1, accuracy, macro_accuracy, f1_score] + class_f1
 
         for k in range(1, self.update_step_test):
             # 1. run the i-th task and compute loss for k=1~K-1
@@ -400,16 +439,18 @@ class Meta(nn.Module):
             loss_q = F.cross_entropy(logits_q, y_qry)
 
             with torch.no_grad():
-                pred_q = F.softmax(logits_q, dim=1).argmax(dim=1)
-                correct = torch.eq(pred_q, y_qry).sum().item()  # convert to numpy
-                corrects[k + 1] = corrects[k + 1] + correct
+                # Get metrics for this step
+                accuracy, macro_accuracy, f1_score, class_f1 = get_metrics(logits_q, querysz, y_qry, self.n_way)
 
+                # Find and record best epoch
+                score = 0.5 * accuracy + 0.5 * f1_score
+                if score > best_score:
+                    best_score = score
+                    df_best.loc[0] = [k + 1, accuracy, macro_accuracy, f1_score] + class_f1
 
         del net
 
-        accs = np.array(corrects) / querysz
-
-        return accs
+        return df_best
 
 
 def main():
