@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2329daf6-e4b3-47ad-8e2c-abba4913ef24" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/train/multi_modal_train.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train/semantic_train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JupyterNotebooks/PCTestingCS.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/JupyterNotebooks/PCTestingCS.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train/.ipynb_checkpoints/MAML-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/train/.ipynb_checkpoints/MAML-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/basic.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/basic_cosine.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/datasets.py" beforeDir="false" afterPath="$PROJECT_DIR$/shared/datasets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train/.ipynb_checkpoints/biobert-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/train/.ipynb_checkpoints/biobert-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/.ipynb_checkpoints/testing-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/train/.ipynb_checkpoints/testing-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train/MAML.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/train/MAML.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train/baseline_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/baseline_train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train/biobert.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/train/biobert.ipynb" afterDir="false" />
@@ -13,6 +17,7 @@
       <change beforePath="$PROJECT_DIR$/train/maml_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/maml_train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train/nc_cs_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/nc_cs_train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train/nc_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train/nc_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train/testing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/train/testing.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,81 +26,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train/legacy/basic_train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="30" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#27#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train/baseline_train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="36" column="96" lean-forward="true" selection-start-line="36" selection-start-column="96" selection-end-line="36" selection-end-column="96" />
-              <folding>
-                <element signature="e#0#27#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JupyterNotebooks/Baseline_CS.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="0" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train/legacy/semantic_train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shared/datasets.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="7" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shared/legacy/datasets.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-870">
-              <caret line="53" column="31" lean-forward="true" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/train/biobert.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="0" />
+        <entry file="file://$PROJECT_DIR$/train/nc_train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="34" lean-forward="true" selection-end-line="110" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -163,9 +102,7 @@
         <option value="$PROJECT_DIR$/scripts/create_splits.py" />
         <option value="$PROJECT_DIR$/train/bert.ipynb" />
         <option value="$PROJECT_DIR$/train/biobert.ipynb" />
-        <option value="$PROJECT_DIR$/train/multi_modal_train.py" />
         <option value="$PROJECT_DIR$/shared/models.py" />
-        <option value="$PROJECT_DIR$/train/semantic_train.py" />
         <option value="$PROJECT_DIR$/MAML/meta.py" />
         <option value="$PROJECT_DIR$/shared/MAML.py" />
         <option value="$PROJECT_DIR$/train/.ipynb_checkpoints/MAML.ipynb" />
@@ -176,21 +113,23 @@
         <option value="$PROJECT_DIR$/train/testing.ipynb" />
         <option value="$PROJECT_DIR$/shared/metrics.py" />
         <option value="$PROJECT_DIR$/train/MAML.ipynb" />
-        <option value="$PROJECT_DIR$/shared/datasets.py" />
         <option value="$PROJECT_DIR$/shared/meta.py" />
         <option value="$PROJECT_DIR$/train/basic_train.py" />
         <option value="$PROJECT_DIR$/train/basic_cosine_train.py" />
-        <option value="$PROJECT_DIR$/train/baseline_train.py" />
-        <option value="$PROJECT_DIR$/train/cosine_similarity_train.py" />
+        <option value="$PROJECT_DIR$/shared/legacy/datasets.py" />
+        <option value="$PROJECT_DIR$/shared/datasets.py" />
+        <option value="$PROJECT_DIR$/train/maml_train.py" />
+        <option value="$PROJECT_DIR$/train/semantic_train.py" />
         <option value="$PROJECT_DIR$/train/nc_cs_train.py" />
         <option value="$PROJECT_DIR$/train/nc_train.py" />
-        <option value="$PROJECT_DIR$/train/maml_train.py" />
-        <option value="$PROJECT_DIR$/shared/legacy/datasets.py" />
+        <option value="$PROJECT_DIR$/train/baseline_train.py" />
+        <option value="$PROJECT_DIR$/train/cosine_similarity_train.py" />
+        <option value="$PROJECT_DIR$/train/multi_modal_train.py" />
       </list>
     </option>
   </component>
   <component name="JupyterTrust" id="2653e402-3103-437a-9cec-23fb4f6c0b38" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="150" />
     <option name="y" value="70" />
     <option name="width" value="1403" />
@@ -205,6 +144,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -227,17 +167,10 @@
               <item name="Monash_NIH_FYP" type="462c0819:PsiDirectoryNode" />
               <item name="train" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Monash_NIH_FYP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Monash_NIH_FYP" type="462c0819:PsiDirectoryNode" />
-              <item name="train" type="462c0819:PsiDirectoryNode" />
-              <item name="legacy" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -437,9 +370,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="26" width="1916" height="930" extended-state="6" />
+    <frame x="-6" y="26" width="1932" height="946" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15241636" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15007898" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -450,7 +384,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32925338" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32925338" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49921012" visible="true" weight="0.15855181" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49921012" visible="true" weight="0.14320685" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007899" side_tool="true" weight="0.15525672" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32925338" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -484,8 +418,6 @@
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1593684251028" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage3 (copy).py" />
-    <entry file="file://$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage3.py" />
     <entry file="file://$PROJECT_DIR$/100_shot/baseline_cs/test.ipynb" />
     <entry file="file://$PROJECT_DIR$/100_shot/baseline_nc/Baseline.ipynb" />
     <entry file="file://$PROJECT_DIR$/100_shot/baseline_cs/baseline_cs_stage1_lr.py" />
@@ -519,8 +451,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/multi_modal_train.py" />
-    <entry file="file://$PROJECT_DIR$/train/semantic_train.py" />
     <entry file="file://$PROJECT_DIR$/shared/dataset_testing.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -548,16 +478,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/legacy/baseline_train.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/legacy/cosine_similarity_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="51" column="98" lean-forward="true" selection-start-line="51" selection-start-column="98" selection-end-line="51" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train/nc_train" />
     <entry file="file://$PROJECT_DIR$/train/legacy/nc_train.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -566,24 +486,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/legacy/nc_cs_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="67" column="13" lean-forward="true" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/train/bert.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/testing.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
         </state>
       </provider>
     </entry>
@@ -642,58 +548,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/nc_cs_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="21" column="99" lean-forward="true" selection-start-line="21" selection-start-column="99" selection-end-line="21" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/nc_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="21" column="99" lean-forward="true" selection-start-line="21" selection-start-column="99" selection-end-line="21" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/cosine_similarity_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="24" column="99" lean-forward="true" selection-start-line="24" selection-start-column="99" selection-end-line="24" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/maml_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="102" column="61" lean-forward="true" selection-start-line="102" selection-start-column="61" selection-end-line="102" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/MAML.ipynb">
+    <entry file="file://$PROJECT_DIR$/train/biobert.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/legacy/basic_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="30" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/baseline_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="36" column="96" lean-forward="true" selection-start-line="36" selection-start-column="96" selection-end-line="36" selection-end-column="96" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -704,40 +562,165 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/legacy/semantic_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/JupyterNotebooks/DataLoader.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shared/datasets.py">
+    <entry file="file://$PROJECT_DIR$/train/legacy/basic_train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="7" selection-end-column="24" />
+        <state relative-caret-position="195">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="30" selection-end-column="32" />
           <folding>
-            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/shared/legacy/datasets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-870">
-          <caret line="53" column="31" lean-forward="true" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
+        <state relative-caret-position="-1245">
+          <caret line="112" column="42" lean-forward="true" selection-start-line="112" selection-start-column="42" selection-end-line="112" selection-end-column="42" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/biobert.ipynb">
+    <entry file="file://$PROJECT_DIR$/train/legacy/multi_modal_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="14" selection-end-line="176" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/MAML.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/testing.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/datasets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/nc_cs_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/baseline_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/semantic_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="74" column="16" lean-forward="true" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/maml_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/legacy/semantic_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/legacy/baseline_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/multi_modal_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="186" lean-forward="true" selection-start-line="186" selection-end-line="186" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/legacy/nc_cs_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="67" column="13" lean-forward="true" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/legacy/cosine_similarity_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="49" column="47" lean-forward="true" selection-end-line="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/cosine_similarity_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="23" column="67" lean-forward="true" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/nc_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="34" lean-forward="true" selection-end-line="110" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

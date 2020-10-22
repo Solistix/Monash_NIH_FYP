@@ -11,6 +11,11 @@ from shared.meta import *
 
 
 def main(k_shot):
+    # Set seed for reproducibility
+    torch.manual_seed(222)
+    torch.cuda.manual_seed_all(222)
+    np.random.seed(222)
+
     n_way = 3
     k_query = 16
     num_workers = 12

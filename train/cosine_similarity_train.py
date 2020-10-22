@@ -1,20 +1,27 @@
+import torch
+import numpy as np
+import sys
 from baseline_train import *
 
 
-def main():
+def main(k_shot):
+    # Set seed for reproducibility
+    torch.manual_seed(222)
+    torch.cuda.manual_seed_all(222)
+    np.random.seed(222)
+
     # Set Training Parameters
     n_way = 3
-    k_shot = 20
     k_query = 16
-    num_episodes = 100
+    num_episodes = 200
     num_epochs = 100
     num_workers = 12
     bs = 4
     lr = 1e-4
     root = '../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/files'
     path_splits = '../splits/splits.csv'  # Location of preprocessed splits
-    path_results = '../../results'  # Folder to save the CSV results
-    path_pretrained = '../results/basic_cosine/basic_cosine_55.pth'
+    path_results = f'../../results/{k_shot}shot'  # Folder to save the CSV results
+    path_pretrained = '../results/basic_cosine/basic_cosine_49.pth'
     freeze = ['cos_sim.weight']   # Freeze all layers except linear layers
 
     torch.cuda.set_device(0)
@@ -92,4 +99,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    print(f'Cosine Similarity Training {sys.argv[1]} shot')
+    main(int(sys.argv[1]))  # Get the k_shot variable from command line
