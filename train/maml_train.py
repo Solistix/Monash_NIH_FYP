@@ -1,3 +1,7 @@
+"""
+This file trains a MAML model using the meta-learning framework.
+"""
+
 import torch, os
 import pandas as pd
 import numpy as np
@@ -30,8 +34,8 @@ def main(k_shot):
     if not os.path.exists(path_results):
         os.makedirs(path_results)
 
-    update_lr = 1e-2  # Learning rate for meta-training
-    meta_lr = 1e-3  # Learning rate for meta-testing
+    update_lr = 1e-2  # Learning rate for the task specific weights
+    meta_lr = 1e-3  # Learning rate for the meta-update
     update_step = 5  # Number of meta-training update steps
     update_step_test = 10  # Number of meta-testing update steps
     imgsz = 224  # Size of images

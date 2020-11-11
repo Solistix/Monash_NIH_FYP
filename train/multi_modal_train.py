@@ -1,3 +1,8 @@
+"""
+This file trains the Multi-Modal model which is concatenates the features obtained from the basic model and the BioBERT.
+This is connected to a linear classification layer which is trained on a meta-learning framework.
+"""
+
 import torch
 import numpy as np
 import pandas as pd
@@ -14,7 +19,21 @@ from shared.metrics import *
 
 
 def train(image_inputs, text_inputs, attention_inputs, labels, model, criterion, device, optimizer, freeze=False):
-    # Training loop
+    """
+    Training Loop
+
+    :param image_inputs: The batch of image training inputs
+    :param text_inputs: The tokenized batch of text training inputs
+    :param attention_inputs: The attention mask that indicates which value of the text inputs are padding or not
+    :param labels: The labels of the batched training data
+    :param model: The model that the data will be trained on
+    :param criterion: The loss function
+    :param device: The type of device that the training will occur on
+    :param optimizer: The optimization function
+    :param freeze: A list of model parameters that will be unfrozen for training. If the list does not exist then no
+    parameters are frozen otherwise everything else will be frozen.
+    :return: The training loss for that batch
+    """
     model.train()
 
     # Freeze all layers except those indicated
@@ -35,6 +54,20 @@ def train(image_inputs, text_inputs, attention_inputs, labels, model, criterion,
 
 
 def test(image_inputs, text_inputs, attention_inputs, labels, model, criterion, device, n_way):
+    """
+    Testing Loop
+
+    :param image_inputs: The batch of image testing inputs
+    :param text_inputs: The tokenized batch of text testing inputs
+    :param attention_inputs: The attention mask that indicates which value of the text inputs are padding or not
+    :param labels: The labels of the batched training data
+    :param model: The model that the data will be tested on
+    :param criterion: The loss function
+    :param device: The type of device that the training will occur on
+    :param n_way: The number of classes that the data can take
+    :return: A tuple containing the validation loss, validation accuracy, average class accuracy,
+    Macro-F1 score and a list of class F1 scores
+    """
     # An F1 Score of 0 indicates that it is invalid
     model.eval()
     true_positive = list(0. for i in range(n_way))  # Number of correctly predicted samples per class

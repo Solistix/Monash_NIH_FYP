@@ -1,3 +1,8 @@
+"""
+This file trains the Nearest Centroid model using the meta-learning framework. The feature extractor used is from the
+basic cosine model.
+"""
+
 import torch
 import numpy as np
 import sys

@@ -3,26 +3,32 @@ import pandas as pd
 from pathlib import Path
 
 
-def create_splits(k_shot, path_splits):
+def create_splits(path_metadata, path_splits):
     """
-    Create training and validation splits for the MIMIC-CXR-JPG Database. This function also performs the following:
+    Create curated splits for the MIMIC-CXR-JPG Database.
+
+    The following transformation is applied to the database:
         Keeps only affirmative data,
         Merges the two set of structured labels
         Removes disagreeing samples and multi-class samples
-        Removes the Pleural Other Class
+        Removes the Pleural Other and Support Devices Class
         Keeps only Antero-posterior oriented samples
         Undersamples the No Finding class to 5000 samples
         Exports the splits into a csv file
 
-    Input:
-            k_shot: The number of samples per class for the novel classes
+    :param path_metadata: The relative path of the folder that the metadata, chexpert and negbio information is stored
+    :type path_metadata: str
+    :param path_splits: The relative path that the CSV file will be saved to
+    :type path_splits: str
+    :return:
     """
-    novel_labels = ['Lung Lesion', 'Enlarged Cardiomediastinum', 'Pleural Effusion']
+    novel_labels = ['Lung Lesion', 'Lung Opacity', 'Enlarged Cardiomediastinum',
+                    'Pleural Effusion', 'Pneumothorax', 'Fracture']
 
     # Load in data
-    path_chexpert = Path('../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/mimic-cxr-2.0.0-chexpert.csv.gz')
-    path_negbio = Path('../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/mimic-cxr-2.0.0-negbio.csv.gz')
-    path_metadata = Path('../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org/mimic-cxr-2.0.0-metadata.csv.gz')
+    path_chexpert = Path(os.path.join(path_metadata, 'mimic-cxr-2.0.0-chexpert.csv.gz'))
+    path_negbio = Path(os.path.join(path_metadata, 'mimic-cxr-2.0.0-negbio.csv.gz'))
+    path_metadata = Path(os.path.join(path_metadata, 'mimic-cxr-2.0.0-metadata.csv.gz'))
 
     df_chexpert = pd.read_csv(path_chexpert)
     df_negbio = pd.read_csv(path_negbio)
@@ -32,7 +38,7 @@ def create_splits(k_shot, path_splits):
     df = df_negbio.merge(
         df_chexpert,
         how='left',
-        left_on=['subject_id','study_id'], right_on=['subject_id','study_id'],
+        left_on=['subject_id', 'study_id'], right_on=['subject_id', 'study_id'],
         suffixes=('', '_cx')
     )
 
@@ -45,18 +51,18 @@ def create_splits(k_shot, path_splits):
         'ProcedureCodeSequence_CodeMeaning',
         'ViewCodeSequence_CodeMeaning',
         'PatientOrientationCodeSequence_CodeMeaning'
-    ],axis=1, inplace=True)
+    ], axis=1, inplace=True)
 
     df = df_metadata.merge(
         df,
         how='left',
-        left_on=['subject_id','study_id'], right_on=['subject_id','study_id'],
+        left_on=['subject_id', 'study_id'], right_on=['subject_id', 'study_id'],
     )
 
     # Preprocess data:
     # Only use data that is a '1.0'
     # Remove all disagreeing '1.0' data
-    # Remove all Pleural Other findings
+    # Remove all Pleural Other and Support Devices findings
     # Remove all non antero-posterior (AP) data
     for key in df.columns:
         if key in ('dicom_id', 'subject_id', 'study_id', 'ViewPosition'):
@@ -77,13 +83,17 @@ def create_splits(k_shot, path_splits):
     keep = df['Pleural Other'].map({'Pleural Other': False}).fillna(True)
     df = df[keep]
 
+    # Remove all Pleural Other Data
+    keep = df['Support Devices'].map({'Support Devices': False}).fillna(True)
+    df = df[keep]
+
     # Remove all non antero-posterior (AP) data
     keep = df['ViewPosition'].map({'AP': True}).fillna(False)
     df = df[keep]
 
     # Remove Columns
     df.drop([key for key in df.columns if key[-3:] == '_cx'], axis=1, inplace=True)
-    df.drop(['ViewPosition', 'Pleural Other'], axis=1, inplace=True)
+    df.drop(['ViewPosition', 'Pleural Other', 'Support Devices'], axis=1, inplace=True)
 
     # Separate columns into path and labels
     df_labels = df.copy()
@@ -105,14 +115,14 @@ def create_splits(k_shot, path_splits):
 
     df_splits = df_single_labels.copy()
 
-    # Create splits: 80% Training and 20% Validation per base class
-    #                100 training and 300 validation samples per novel class
+    # Create base training splits of: 80% Training and 20% Validation per class
+    # Label novel classes to be used in episode generation
     for label in cols_labels:
+        # Create a dataframe for the single label in this iteration
         df_unsplit = df_splits[df_splits['labels'].apply(lambda x: x == label)]
 
         # Base Classes
         if label not in novel_labels:
-
             # Undersample the 'No Finding' Class to 5000 samples
             if label == 'No Finding':
                 df_unsplit = df_unsplit.sample(5000, random_state=1)
@@ -126,6 +136,7 @@ def create_splits(k_shot, path_splits):
             df_train.drop(['file_path', 'labels'], axis=1, inplace=True)
             df_validate.drop(['file_path', 'labels'], axis=1, inplace=True)
 
+            # Merge the training dataframe into the main dataframe
             df_splits = df_splits.merge(
                 df_train,
                 how='left',
@@ -134,11 +145,13 @@ def create_splits(k_shot, path_splits):
                 suffixes=('', '_x')
             )
 
+            # Combines values of the split columns
             if 'split_x' in df_splits.columns:
                 df_splits['split'] = df_splits[['split', 'split_x']].apply(
                     lambda x: ''.join(x.dropna().values.tolist()), axis=1)
                 df_splits.drop('split_x', axis=1, inplace=True)
 
+            # Merge the validation dataframe into the main dataframe
             df_splits = df_splits.merge(
                 df_validate,
                 how='left',
@@ -147,6 +160,7 @@ def create_splits(k_shot, path_splits):
                 suffixes=('', '_x')
             )
 
+            # Combines values of the split columns
             if 'split_x' in df_splits.columns:
                 df_splits['split'] = df_splits[['split', 'split_x']].apply(
                     lambda x: ''.join(x.dropna().values.tolist()), axis=1)
@@ -154,13 +168,11 @@ def create_splits(k_shot, path_splits):
 
         # Novel Classes
         else:
-            df_unsplit = df_unsplit.sample(n=k_shot + 300, random_state=1)
-
-            df_unsplit['split'] = ''
-            df_unsplit['split'][:k_shot] = 'novel_train'
-            df_unsplit['split'][k_shot:] = 'novel_validate'
+            # Label the entire class as 'novel'
+            df_unsplit['split'] = 'novel'
             df_unsplit.drop(['file_path', 'labels'], axis=1, inplace=True)
 
+            # Merge the novel dataframe into the main dataframe
             df_splits = df_splits.merge(
                 df_unsplit,
                 how='left',
@@ -169,41 +181,61 @@ def create_splits(k_shot, path_splits):
                 suffixes=('', '_x')
             )
 
+            # Combines values of the split columns
             if 'split_x' in df_splits.columns:
                 df_splits['split'] = df_splits[['split', 'split_x']].apply(
                     lambda x: ''.join(x.dropna().values.tolist()), axis=1)
                 df_splits.drop('split_x', axis=1, inplace=True)
 
-    df_splits.to_csv(os.path.join(path_splits, f'{k_shot}_shot.csv'), index=False)
+    # Create splits folder if it does not exist
+    if not os.path.exists(path_splits):
+        os.makedirs(path_splits)
+
+    # Export CSV containing splits
+    df_splits.to_csv(os.path.join(path_splits, 'splits.csv'), index=False)
 
 
-def check_splits(df_csv):
+def check_splits(path_csv):
     """
-    Sums up the number of training and validation samples per class
+    Sums up the number of training, validation and novel samples per class
 
-    Input:
-            df_csv: A dataframe containing training validation split data
-    Output: An array containing two dictionaries stating the amount of training and validation samples
+    :param path_csv: The path to the CSV containing the splits data
+    :type path_csv: str
+    :return: A tuple of dictionaries detailing the number of samples per class
+    :rtype: tuple
     """
-    df_splits = df_csv
+    df_splits = pd.read_csv(path_csv)
     dict_train = {}
     dict_validate = {}
+    dict_novel = {}
     for index, row in df_splits.iterrows():
-        if (row['split'] == 'base_train') or (row['split'] == 'novel_train'):
+        # Counts the number of samples per class in the 'base_train' split category
+        if row['split'] == 'base_train':
             if row['labels'] in dict_train.keys():
                 dict_train[row['labels']] += 1
             else:
                 dict_train[row['labels']] = 1
-        elif (row['split'] == 'base_validate') or (row['split'] == 'novel_validate'):
+
+        # Counts the number of samples per class in the 'base_validate' split category
+        elif row['split'] == 'base_validate':
             if row['labels'] in dict_validate.keys():
                 dict_validate[row['labels']] += 1
             else:
                 dict_validate[row['labels']] = 1
 
-    return [dict_train, dict_validate]
+        # Counts the number of samples per class in the 'novel' split category
+        elif row['split'] == 'novel':
+            if row['labels'] in dict_novel.keys():
+                dict_novel[row['labels']] += 1
+            else:
+                dict_novel[row['labels']] = 1
+
+    return dict_train, dict_validate, dict_novel
 
 
 if __name__ == '__main__':
-    shot_list = [20, 10, 5, 3, 1]
-    for k_shot in shot_list:
-        create_splits(k_shot, '../splits')
+    path_metadata = '../../../../scratch/rl80/mimic-cxr-jpg-2.0.0.physionet.org'  # Folder of the MIMIC-CXR-JPG metadata
+    path_splits = '../splits'  # Folder to save the splits to
+
+    # Create Splits
+    create_splits(path_metadata, path_splits)

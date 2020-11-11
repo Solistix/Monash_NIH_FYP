@@ -1,4 +1,20 @@
 def metrics(true_positive, total_truth, predicted_positive, correct_total, total):
+    """
+    A function that will calculate the accuracy, average class accuracy, macro-F1 score and the F1 scores per class
+
+    :param true_positive: A list containing the number of correctly predicted samples per class. The class is the index.
+    :type true_positive: list
+    :param total_truth: A list containing the number of samples in each class.
+    :type total_truth: list
+    :param predicted_positive: A list containing the number of predicted samples per class. Does not have to be right.
+    :type predicted_positive: list
+    :param correct_total: The number of correctly predicted samples
+    :type correct_total: int
+    :param total: Total number of samples that are evaluated
+    :type total: int
+    :return: A tuple of accuracy, average class accuracy, Macro-F1_score and a list of class F1 scores
+    :rtype: tuple
+    """
     n_way = len(
         true_positive)  # Retrieve n_way from the length of the variables. All 3 inputs should be the same length
     f1_flag = 0  # Flag for invalid F1 score

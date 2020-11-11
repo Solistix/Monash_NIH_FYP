@@ -1,3 +1,8 @@
+"""
+This file trains the basic model using normal supervised learning. This functions as the image feature extractors for
+the other models.
+"""
+
 import torch.optim as optim
 from torch.utils.data import DataLoader
 import sys
@@ -9,7 +14,18 @@ from shared.metrics import *
 
 
 def train(model, train_loader, criterion, device, optimizer, freeze=False):
-    # freeze accepts a list and represents the layers not to freeze
+    """
+    Training loop
+
+    :param model: The model that the data will be trained on
+    :param train_loader: The data loader which will give the batched training data
+    :param criterion: The loss function
+    :param device: The type of device that the training will occur on
+    :param optimizer: The optimization function
+    :param freeze: A list of model parameters that will be unfrozen for training. If the list does not exist then no
+    parameters are frozen otherwise everything else will be frozen.
+    :return: The training loss for the loop.
+    """
     model.train()
 
     # Freeze all layers except those indicated
@@ -32,6 +48,17 @@ def train(model, train_loader, criterion, device, optimizer, freeze=False):
 
 
 def test(model, test_loader, criterion, device, n_way):
+    """
+    Testing Loop
+
+    :param model: The model that the data will be tested on
+    :param test_loader: The data loader which will give the batched testing data
+    :param criterion: The loss function
+    :param device: The type of device that the training will occur on
+    :param n_way: The number of classes that the data can take
+    :return: A tuple containing the validation loss, validation accuracy, average class accuracy,
+    Macro-F1 score and a list of class F1 scores
+    """
     # An F1 Score of 0 indicates that it is invalid
     model.eval()
     true_positive = list(0. for i in range(n_way))  # Number of correctly predicted samples per class

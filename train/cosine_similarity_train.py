@@ -1,3 +1,8 @@
+"""
+This file trains the Baseline model with a cosine similarity layer on the meta-learning framework. The feature extractor
+used is from the  basic_cosine model.
+"""
+
 import torch
 import numpy as np
 import sys

@@ -1,3 +1,9 @@
+"""
+This file was adapted from: https://github.com/dragen1860/MAML-Pytorch, date: 15/06/2020.
+It combines the learner.py and meta.py files from his code. Other changes made are to make it work with the desired
+metrics: accuracy and macro-F1 score. It was also changed to work with the chest radiograph data.
+"""
+
 import torch
 from torch import nn
 from torch import optim
@@ -13,18 +19,17 @@ sys.path.append('..')
 from shared.metrics import *
 
 
-# TODO: Need to Reference to https://github.com/dragen1860/MAML-Pytorch
 class Learner(nn.Module):
     """
-
+    Generates the model architecture that will be used in the MAML algorithm
     """
 
     def __init__(self, config, imgc, imgsz):
         """
 
         :param config: network config file, type:list of (string, list)
-        :param imgc: 1 or 3
-        :param imgsz:  28 or 84
+        :param imgc: The number of channels of the image data. 1 for grayscale and 3 for RGB
+        :param imgsz: The size of the images
         """
         super(Learner, self).__init__()
 
@@ -217,6 +222,20 @@ class Learner(nn.Module):
 
 
 def get_metrics(logits_q, querysz, y_qry, n_way):
+    """
+    Calculates the accuracy, average class accuracy, macro-F1 score and individual class F1 scores based on the inputs
+
+    :param logits_q: The logits obtained from the query set
+    :type logits_q: torch.Tensor
+    :param querysz: The is the size of the query set
+    :type querysz: int
+    :param y_qry: The actual labels of the query set
+    :type y_qry: torch.Tensor
+    :param n_way: The number of classes for the episode
+    :type n_way: int
+    :return: A tuple of accuracy, average class accuracy, Macro-F1_score and a list of class F1 scores
+    :rtype: tuple
+    """
     true_positive = list(0. for i in range(n_way))  # Number of correctly predicted samples per class
     total_truth = list(0. for i in range(n_way))  # Number of ground truths per class
     predicted_positive = list(0. for i in range(n_way))  # Number of predicted samples per class
@@ -227,6 +246,7 @@ def get_metrics(logits_q, querysz, y_qry, n_way):
     correct = (predicted == y_qry).squeeze()
     correct_total += (predicted == y_qry).sum().item()
 
+    # Fill out the required parameters to be used in the metric function
     for i in range(len(predicted)):
         label = y_qry[i]
         true_positive[label] += correct[i].item()

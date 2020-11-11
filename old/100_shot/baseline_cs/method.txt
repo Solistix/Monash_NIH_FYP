@@ -1,3 +1,0 @@
-Stage 1 was trained
-Stage 1 was converted to 3 classes
-Stage 3 was trained on the converted stage 1 using the novel classes

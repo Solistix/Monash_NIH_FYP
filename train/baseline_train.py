@@ -1,3 +1,8 @@
+"""
+This file trains the Baseline model with a linear classification layer using the meta-learning framework. The feature
+extractor used is obtained from the basic model.
+"""
+
 import torch
 import numpy as np
 import torch.optim as optim
@@ -11,7 +16,19 @@ from shared.metrics import *
 
 
 def train(inputs, labels, model, criterion, device, optimizer, freeze=False):
-    # Training loop
+    """
+    Training loop
+
+    :param inputs: The batched training data
+    :param labels: The labels of the batched training data
+    :param model: The model that the data will be trained on
+    :param criterion: The loss function
+    :param device: The type of device that the training will occur on
+    :param optimizer: The optimization function
+    :param freeze: A list of model parameters that will be unfrozen for training. If the list does not exist then no
+    parameters are frozen otherwise everything else will be frozen.
+    :return: The training loss for that batch
+    """
     model.train()
 
     # Freeze all layers except those indicated
@@ -32,6 +49,18 @@ def train(inputs, labels, model, criterion, device, optimizer, freeze=False):
 
 
 def test(inputs, labels, model, criterion, device, n_way):
+    """
+    Testing Loop
+
+    :param inputs: The batched data that will be tested
+    :param labels: The labels of the batched data
+    :param model: The model that the data will be tested on
+    :param criterion: The loss function
+    :param device: The type of device that the training will occur on
+    :param n_way: The number of classes that the data can take
+    :return: A tuple containing the validation loss, validation accuracy, average class accuracy,
+    Macro-F1 score and a list of class F1 scores
+    """
     # An F1 Score of 0 indicates that it is invalid
     model.eval()
     true_positive = list(0. for i in range(n_way))  # Number of correctly predicted samples per class
