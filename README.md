@@ -28,7 +28,7 @@ The image feature extractors are made from the basic and basic cosine models. Th
 
 The basic cosine is used in the training of the “cosine_similarity” (Baseline with cosine distance function) and NC_CS (Nearest Centroid).
 
-A pre-trained BioBERT model is used as the feature extractor for the semantic and multi-modal model. Information about the BioBERT model can be obtained [here](https://arxiv.org/abs/1901.08746). The BioBERT model was implemented using this package (here)[https://pypi.org/project/biobert-pytorch/]
+A pre-trained BioBERT model is used as the feature extractor for the semantic and multi-modal model. Information about the BioBERT model can be obtained [here](https://arxiv.org/abs/1901.08746). The BioBERT model was implemented using this package [here](https://pypi.org/project/biobert-pytorch/)
 
 Feature extractors are trained on normal supervised learning.
 
